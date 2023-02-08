@@ -33,8 +33,8 @@ export function HabitsList({ date, onCompletedChange }: IHabitsList) {
       });
   }, []);
 
-  async function handleToogleHabit(habitId: string) {
-    await api.patch(`/habits/${habitId}/toogle`);
+  async function handleToggleHabit(habitId: string) {
+    await api.patch(`/habits/${habitId}/toggle`);
 
     const isHabitAlreadyCompleted =
       habitsInfo!.completedHabits.includes(habitId);
@@ -64,7 +64,7 @@ export function HabitsList({ date, onCompletedChange }: IHabitsList) {
         return (
           <Checkbox.Root
             key={habit.id}
-            onCheckedChange={() => handleToogleHabit(habit.id)}
+            onCheckedChange={() => handleToggleHabit(habit.id)}
             checked={habitsInfo.completedHabits.includes(habit.id)}
             disabled={isDateInPast}
             className="flex items-center gap-3 group focus:outline-none disabled:cursor-not-allowed"
